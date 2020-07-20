@@ -1,0 +1,47 @@
+{
+  "name": "@jonmilley/jonmilleynpx",
+  "version": "1.6.0",
+  "description": "A personal card for Jonathan Milley (@jonmilley)",
+  "main": "/bin/card.js",
+  "bin": {
+    "bitandbang": "./bin/card.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonmilley/jonmilleynpx.git"
+  },
+  "homepage": "https://milley.dev",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "node build.js",
+    "dev": "npm run build && node ./bin/card.js",
+    "lint": "standard",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "card",
+    "npm",
+    "npm card",
+    "npx",
+    "npx card",
+    "business card"
+  ],
+  "author": "Jonathan Milley <jonmilley@jonmilley.com> (httsp://milley.dev)",
+  "license": "MIT",
+  "files": [
+    "bin/card.js",
+    "bin/output"
+  ],
+  "devDependencies": {
+    "boxen": "^2.1.0",
+    "chalk": "^2.4.1",
+    "standard": "^12.0.1"
+  },
+  "bugs": {
+    "url": "https://github.com/jonmilley/jonmilleynpx/issues"
+  },
+  "dependencies": {},
+  "publishConfig": {
+    "registry": "https://npm.registry.github.com/"
+  }
+}
