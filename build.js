@@ -5,18 +5,23 @@ const chalk = require('chalk')
 const boxen = require('boxen')
 const fs = require('fs')
 const path = require('path')
-
+const gs = require( "gradient-string" );
 // Define options for Boxen
 const options = {
   padding: 1,
   margin: 1,
   borderStyle: 'round'
 }
-
+const blue = "#00A3FF";
+const green = "#02e088";
+const orange = "#ff7b01";
+const inkyBlue = "#130f25";
+const bg = gs( blue, green );
+const ob = gs(orange,inkyBlue)
 // Text + chalk definitions
 const data = {
-  name: chalk.white('               Jonathan Milley'),
-  handle: chalk.white('jonmilley'),
+  name: '               Jonathan Milley',
+  handle:'jonmilley',
   work: chalk.white('Senior Software Engineer at Viasat'),
   
   twitter: chalk.gray('https://twitter.com/') + chalk.cyan('jonmilley'),
@@ -32,7 +37,9 @@ const data = {
   labelGitHub: chalk.white.bold('     GitHub:'),
   labelLinkedIn: chalk.white.bold('   LinkedIn:'),
   labelWeb: chalk.white.bold('        Web:'),
-  labelCard: chalk.white.bold('       Card:')
+  labelCard: chalk.white.bold('       Card:'),
+  bio:  `I am a father of 2, geek, photographer, illustrator, 
+and software developer, living in Newfoundland, Canada.`,
 }
 
 // Actual strings we're going to output
@@ -46,9 +53,9 @@ const githubing = `${data.labelGitHub}  ${data.github}`
 const linkedining = `${data.labelLinkedIn}  ${data.linkedin}`
 const webing = `${data.labelWeb}  ${data.web}`
 const carding = `${data.labelCard}  ${data.npx}`
-
+const bio = `\n\n${ data.bio }`;
 // Put all our output together into a single variable so we can use boxen effectively
-const output = heading + // data.name + data.handle
+const output = bg(heading) + // data.name + data.handle
                newline + newline + // Add one whole blank line
                working + newline + // data.labelWork + data.work
                
@@ -57,6 +64,7 @@ const output = heading + // data.name + data.handle
                githubing + newline + // data.labelGitHub + data.github
                linkedining + newline + // data.labelLinkedIn + data.linkedin
                webing + newline + newline + // data.labelWeb + data.web
-               carding // data.labelCard + data.npx
+               carding + // data.labelCard + data.npx
+               ob.multiline(bio)
 
-fs.writeFileSync(path.join(__dirname, 'bin/output'), chalk.green(boxen(output, options)))
+fs.writeFileSync(path.join(__dirname, 'bin/output'), chalk.blue(boxen(output, options)))

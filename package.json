@@ -1,6 +1,6 @@
 {
   "name": "jonmilley",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A personal card for Jonathan Milley (@jonmilley)",
   "main": "/bin/card.js",
   "bin": {
@@ -35,13 +35,13 @@
   "devDependencies": {
     "boxen": "^2.1.0",
     "chalk": "^2.4.1",
+    "gradient-string": "^2.0.2",
     "standard": "^12.0.1"
   },
   "bugs": {
     "url": "https://github.com/jonmilley/jonmilleynpx/issues"
   },
-  "dependencies": {},
   "publishConfig": {
-    "registry": "https://npm.registry.github.com/"
+    "registry": "https://registry.npmjs.org/"
   }
 }
