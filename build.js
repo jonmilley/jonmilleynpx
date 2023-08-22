@@ -16,8 +16,10 @@ const blue = "#00A3FF";
 const green = "#02e088";
 const orange = "#ff7b01";
 const inkyBlue = "#130f25";
+const pink = "#ff1675";
+
 const bg = gs( blue, green );
-const ob = gs(orange,inkyBlue)
+const ob = gs(orange,pink)
 // Text + chalk definitions
 const data = {
   name: '               Jonathan Milley',
