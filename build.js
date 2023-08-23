@@ -27,7 +27,7 @@ const data = {
   work: chalk.white('Senior Software Engineer at Viasat'),
   
   twitter: chalk.gray('https://twitter.com/') + chalk.cyan('jonmilley'),
-  npm: chalk.gray('https://npmjs.com/') + chalk.red('~jonmilley'),
+  npm: chalk.gray('https://npmjs.com/') + chalk.red('~jonmilleynpm'),
   github: chalk.gray('https://github.com/') + chalk.green('jonmilley'),
   linkedin: chalk.gray('https://linkedin.com/in/') + chalk.blue('jonmilley'),
   web: chalk.cyan('https://milley.dev'),
@@ -55,7 +55,7 @@ const githubing = `${data.labelGitHub}  ${data.github}`
 const linkedining = `${data.labelLinkedIn}  ${data.linkedin}`
 const webing = `${data.labelWeb}  ${data.web}`
 const carding = `${data.labelCard}  ${data.npx}`
-const bio = `\n\n${ data.bio }`;
+const bio = `${ data.bio }`;
 // Put all our output together into a single variable so we can use boxen effectively
 const output = bg(heading) + // data.name + data.handle
                newline + newline + // Add one whole blank line
@@ -67,6 +67,7 @@ const output = bg(heading) + // data.name + data.handle
                linkedining + newline + // data.labelLinkedIn + data.linkedin
                webing + newline + newline + // data.labelWeb + data.web
                carding + // data.labelCard + data.npx
+               newline + newline + // Add one whole blank line
                ob.multiline(bio)
 
 fs.writeFileSync(path.join(__dirname, 'bin/output'), chalk.blue(boxen(output, options)))
