@@ -71,4 +71,21 @@ const output = bg(heading) + // data.name + data.handle
                newline + newline + // Add one whole blank line
                ob.multiline(bio)
 
-fs.writeFileSync(path.join(__dirname, 'bin/output'), chalk.blue(boxen(output, options)))
+const outputPath = path.join(__dirname, 'bin/output')
+const rendered = chalk.blue(boxen(output, options))
+
+// Check if output has changed; if so, write it and bump the patch version
+const prev = fs.existsSync(outputPath) ? fs.readFileSync(outputPath, 'utf8') : null
+if (prev !== rendered) {
+  fs.writeFileSync(outputPath, rendered)
+
+  const pkgPath = path.join(__dirname, 'package.json')
+  const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'))
+  const [major, minor, patch] = pkg.version.split('.').map(Number)
+  pkg.version = `${major}.${minor}.${patch + 1}`
+  fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n')
+
+  console.log(`Output changed — version bumped to ${pkg.version}`)
+} else {
+  console.log('Output unchanged — version not bumped')
+}
