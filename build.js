@@ -1,31 +1,31 @@
-'use strict'
+import chalk from 'chalk'
+import boxen from 'boxen'
+import fs from 'fs'
+import { fileURLToPath } from 'url'
+import path from 'path'
+import gs from 'gradient-string'
 
-// Pull in our modules
-const chalk = require('chalk')
-const boxen = require('boxen')
-const fs = require('fs')
-const path = require('path')
-const gs = require( "gradient-string" );
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
 // Define options for Boxen
 const options = {
   padding: 1,
   margin: 1,
   borderStyle: 'round'
 }
-const blue = "#00A3FF";
-const green = "#02e088";
-const orange = "#ff7b01";
-const inkyBlue = "#130f25";
-const pink = "#ff1675";
+const blue = '#00A3FF'
+const green = '#02e088'
+const orange = '#ff7b01'
+const pink = '#ff1675'
 
-const bg = gs( blue, green );
-const ob = gs(orange,pink)
+const bg = gs(blue, green)
+const ob = gs(orange, pink)
 // Text + chalk definitions
 const data = {
   name: '               Jonathan Milley',
-  handle:'jonmilley',
+  handle: 'jonmilley',
   work: chalk.white('Senior Software Engineer at Viasat'),
-  
+
   twitter: chalk.gray('https://twitter.com/') + chalk.cyan('jonmilley'),
   npm: chalk.gray('https://npmjs.com/') + chalk.red('~jonmilleynpm'),
   github: chalk.gray('https://github.com/') + chalk.green('jonmilley'),
@@ -40,8 +40,9 @@ const data = {
   labelLinkedIn: chalk.white.bold('   LinkedIn:'),
   labelWeb: chalk.white.bold('        Web:'),
   labelCard: chalk.white.bold('       Card:'),
-  bio:  `I am a father of 2, geek, photographer, illustrator, 
-and software developer, living in Newfoundland, Canada.`,
+  opensourcing: '',
+  bio: `I am a father of 2, geek, photographer, illustrator,
+and software developer, living in Newfoundland, Canada.`
 }
 
 // Actual strings we're going to output
@@ -55,12 +56,12 @@ const githubing = `${data.labelGitHub}  ${data.github}`
 const linkedining = `${data.labelLinkedIn}  ${data.linkedin}`
 const webing = `${data.labelWeb}  ${data.web}`
 const carding = `${data.labelCard}  ${data.npx}`
-const bio = `${ data.bio }`;
+const bio = `${data.bio}`
 // Put all our output together into a single variable so we can use boxen effectively
 const output = bg(heading) + // data.name + data.handle
                newline + newline + // Add one whole blank line
                working + newline + // data.labelWork + data.work
-               
+
                twittering + newline + // data.labelTwitter + data.twitter
                npming + newline + // data.labelnpm + data.npm
                githubing + newline + // data.labelGitHub + data.github
