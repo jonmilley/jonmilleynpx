@@ -26,7 +26,7 @@ const data = {
   handle: 'jonmilley',
   work: chalk.white('Senior Software Engineer at Viasat'),
 
-  twitter: chalk.gray('https://twitter.com/') + chalk.cyan('jonmilley'),
+  twitter: chalk.gray('https://x.com/') + chalk.cyan('jonmilley'),
   npm: chalk.gray('https://npmjs.com/') + chalk.red('~jonmilleynpm'),
   github: chalk.gray('https://github.com/') + chalk.green('jonmilley'),
   linkedin: chalk.gray('https://linkedin.com/in/') + chalk.blue('jonmilley'),
@@ -34,7 +34,7 @@ const data = {
   npx: chalk.red('npx') + ' ' + chalk.white('jonmilley'),
   labelWork: chalk.white.bold('       Work:'),
   labelOpenSource: chalk.white.bold('Open Source:'),
-  labelTwitter: chalk.white.bold('    Twitter:'),
+  labelTwitter: chalk.white.bold('          X:'),
   labelnpm: chalk.white.bold('        npm:'),
   labelGitHub: chalk.white.bold('     GitHub:'),
   labelLinkedIn: chalk.white.bold('   LinkedIn:'),
@@ -42,7 +42,7 @@ const data = {
   labelCard: chalk.white.bold('       Card:'),
   opensourcing: '',
   bio: `I am a father of 2, geek, photographer, illustrator,
-and software developer, living in Newfoundland, Canada.`
+and software developer, crocheter, quilter living in Newfoundland, Canada.`
 }
 
 // Actual strings we're going to output
