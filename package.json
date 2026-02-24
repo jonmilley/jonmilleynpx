@@ -1,6 +1,6 @@
 {
   "name": "jonmilley",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A personal card for Jonathan Milley (@jonmilley)",
   "main": "/bin/card.js",
   "bin": {

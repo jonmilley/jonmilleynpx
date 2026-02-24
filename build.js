@@ -100,14 +100,16 @@ if (prev !== rendered) {
 // Display the card
 console.log(rendered)
 
-// Ask if user wants to publish
-const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
-rl.question(`Publish v${currentVersion} to npm? (y/N) `, (answer) => {
-  rl.close()
-  if (answer.toLowerCase() === 'y') {
-    console.log('Publishing...')
-    execSync('npm publish', { stdio: 'inherit' })
-  } else {
-    console.log('Skipping publish.')
-  }
-})
+// Ask if user wants to publish, but only if the version changed
+if (prev !== rendered) {
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
+  rl.question(`Publish v${currentVersion} to npm? (y/N) `, (answer) => {
+    rl.close()
+    if (answer.toLowerCase() === 'y') {
+      console.log('Publishing...')
+      execSync('npm publish', { stdio: 'inherit' })
+    } else {
+      console.log('Skipping publish.')
+    }
+  })
+}
