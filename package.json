@@ -4,7 +4,7 @@
   "description": "A personal card for Jonathan Milley (@jonmilley)",
   "main": "/bin/card.js",
   "bin": {
-    "jonmilley": "./bin/card.js"
+    "jonmilley": "bin/card.js"
   },
   "repository": {
     "type": "git",
