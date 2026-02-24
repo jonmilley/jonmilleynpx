@@ -4,6 +4,8 @@ import fs from 'fs'
 import { fileURLToPath } from 'url'
 import path from 'path'
 import gs from 'gradient-string'
+import readline from 'readline'
+import { execSync } from 'child_process'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -76,6 +78,8 @@ const rendered = chalk.blue(boxen(output, options))
 
 // Check if output has changed; if so, write it and bump the patch version
 const prev = fs.existsSync(outputPath) ? fs.readFileSync(outputPath, 'utf8') : null
+let currentVersion
+
 if (prev !== rendered) {
   fs.writeFileSync(outputPath, rendered)
 
@@ -84,8 +88,26 @@ if (prev !== rendered) {
   const [major, minor, patch] = pkg.version.split('.').map(Number)
   pkg.version = `${major}.${minor}.${patch + 1}`
   fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n')
+  currentVersion = pkg.version
 
   console.log(`Output changed — version bumped to ${pkg.version}`)
 } else {
+  const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf8'))
+  currentVersion = pkg.version
   console.log('Output unchanged — version not bumped')
 }
+
+// Display the card
+console.log(rendered)
+
+// Ask if user wants to publish
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
+rl.question(`Publish v${currentVersion} to npm? (y/N) `, (answer) => {
+  rl.close()
+  if (answer.toLowerCase() === 'y') {
+    console.log('Publishing...')
+    execSync('npm publish', { stdio: 'inherit' })
+  } else {
+    console.log('Skipping publish.')
+  }
+})
