@@ -4,7 +4,7 @@
   "description": "A personal card for Jonathan Milley (@jonmilley)",
   "main": "/bin/card.js",
   "bin": {
-    "bitandbang": "./bin/card.js"
+    "jonmilley": "./bin/card.js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,7 @@
     "npx card",
     "business card"
   ],
-  "author": "Jonathan Milley <jonmilley@jonmilley.com> (httsp://milley.dev)",
+  "author": "Jonathan Milley <jonmilley@jonmilley.com> (https://milley.dev)",
   "license": "MIT",
   "files": [
     "bin/card.js",
